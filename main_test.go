@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"io"
 	"os"
 	"strings"
@@ -49,17 +48,4 @@ func restoreStdout(old *os.File, reader *os.File, writer *os.File) string {
 	out, _ := io.ReadAll(reader)
 	os.Stdout = old
 	return strings.TrimSuffix(string(out), "\n")
-}
-
-func main() {
-	fmt.Println(counter(os.Args))
-}
-
-func counter(args []string) int {
-	if len(args[1]) < 1 {
-		return 0
-	}
-	splitString := strings.Split(args[1], " ")
-	count := len(splitString)
-	return count
 }
